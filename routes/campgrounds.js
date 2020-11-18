@@ -27,6 +27,15 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }); 
 
 ///routes for city
+router.get("/aboutus",function(req,res){
+    res.render("campgrounds/aboutus");
+});
+router.get("/privacy",function(req,res){
+    res.render("campgrounds/privacypolicy");
+});
+router.get("/terms",function(req,res){
+    res.render("campgrounds/terms");
+});
 
 router.get("/info",middleware.isloggedin,function(req,res){
     res.render("campgrounds/city");
@@ -316,7 +325,7 @@ router.delete("/campgrounds/:id", middleware.checkcampownership ,function(req,re
             res.redirect("/info");
         }
         else{
-            req.flash("success", "Successfully campground is deleted");
+            req.flash("success", "Appointment Successfully deleted");
             res.redirect("/info");
         }
     })
